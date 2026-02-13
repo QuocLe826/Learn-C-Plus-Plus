@@ -1,35 +1,30 @@
 #include <iostream>
-#include <math.h>
 using namespace std;
 
-
-int isPrime(int num) {
-    if(num < 2) {
-        return 0;
+int checkReversible(int n) {
+    int rev = 0;
+    int tmp = n;
+    while (n != 0) {
+        rev = rev  * 10 + n % 10;
+        n /= 10;
     }
-    for(int i = 2; i <= sqrt(num); i++) {
-        if(num % i == 0) {
-            return 0;
-        }
-    }
-    return 1;
+    return rev == tmp;
 }
+
 void input(int arr[], int n) {
     for(int i = 0; i < n; i++) {
         cout << "Nhap phan tu thu " << i + 1 << ": ";
-        cin >> arr[i];
         cin >> arr[i];
     }
 }
 
 void output(int arr[], int n) {
-    cout << "Cac so nguyen to trong mang la: ";
+    cout << "Cac so thuan nghich trong mang: ";
     for(int i = 0; i < n; i++) {
-        if(isPrime(arr[i])) {
+        if(checkReversible(arr[i])) {
             cout << arr[i] << " ";
         }
     }
-    cout << endl;
 }
 
 int main() {
